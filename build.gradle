@@ -9,4 +9,20 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.1")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+bootRun.environment([
+        "WELCOME_MESSAGE": "hello",
+])
+
+test.environment([
+        "WELCOME_MESSAGE": "Hello from test",
+])
+
+assignments {
+    apiUrl = "https://caddy.pal.pivotal.io"
+    email = ["james.denman@dell.com","rmcinerney@pivotal.io"]
+    cohortIdentifier = "349802131"
 }
