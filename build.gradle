@@ -20,9 +20,3 @@ bootRun.environment([
 test.environment([
         "WELCOME_MESSAGE": "Hello from test",
 ])
-
-assignments {
-    apiUrl = "https://caddy.pal.pivotal.io"
-    email = ["james.denman@dell.com","rmcinerney@pivotal.io"]
-    cohortIdentifier = "349802131"
-}
