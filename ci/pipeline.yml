@@ -60,9 +60,22 @@ jobs:
 - name: deploy-review
   plan:
   - get: pal-tracker
+    passed: [build]
   - get: pal-tracker-artifacts
     trigger: true
     passed: [build]
+  - task: migrate database
+    file: pal-tracker/ci/migrateDatabase.yml
+    params:
+      CF_API_URL: https://api.sys.pikes.pal.pivotal.io
+      CF_USERNAME: rmcinerney@pivotal.io
+      CF_PASSWORD: e858bdfa
+      CF_ORG: rebecca-mcinerney-pal
+      CF_SPACE: review
+      MYSQL_IP: 192.168.16.87
+      DATABASE_NAME: cf_37740baf_3b05_4485_adb2_65500a4f3539
+      DATABASE_USERNAME: wjTZzLvL9B29CRsY
+      DATABASE_PASSWORD: WwqEEczDuSGWbfGy
   - put: review-deployment
     params:
       manifest: pal-tracker/manifest-review.yml
@@ -73,8 +86,21 @@ jobs:
 - name: deploy-production
   plan:
   - get: pal-tracker
+    passed: [deploy-review]
   - get: pal-tracker-artifacts
     passed: [deploy-review]
+  - task: migrate database
+    file: pal-tracker/ci/migrateDatabase.yml
+    params:
+      CF_API_URL: https://api.sys.pikes.pal.pivotal.io
+      CF_USERNAME: rmcinerney@pivotal.io
+      CF_PASSWORD: e858bdfa
+      CF_ORG: rebecca-mcinerney-pal
+      CF_SPACE: production
+      MYSQL_IP: {{mysql-ip}}
+      DATABASE_NAME: cf_f51d41e7_ada2_42c6_85ca_9d254cb9be46
+      DATABASE_USERNAME: mkRXClES4I4NpF5D
+      DATABASE_PASSWORD: IPoX5zr60CFDmSpe
   - put: production-deployment
     params:
       manifest: pal-tracker/manifest-production.yml
