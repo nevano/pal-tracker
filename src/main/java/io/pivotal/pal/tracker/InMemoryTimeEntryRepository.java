@@ -2,7 +2,7 @@ package io.pivotal.pal.tracker;
 
 import java.util.*;
 
-public class InMemoryTimeEntryRepository extends TimeEntryRepository {
+public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     private Map<Long, TimeEntry> timeEntryMap = new HashMap<>();
     private long highestId = 0L;
 

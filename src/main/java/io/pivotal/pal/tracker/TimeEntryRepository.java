@@ -1,27 +1,15 @@
 package io.pivotal.pal.tracker;
 
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 
-@Component
-public class TimeEntryRepository {
-    public TimeEntry create(TimeEntry timeEntry) {
-        return null;
-    }
+public interface TimeEntryRepository {
+    TimeEntry create(TimeEntry timeEntry);
 
-    public TimeEntry find(long id) {
-        return null;
-    }
+    TimeEntry find(long id);
 
-    public List<TimeEntry> list() {
-        return null;
-    }
+    List<TimeEntry> list();
 
-    public TimeEntry update(long id, TimeEntry timeEntry) {
-        return null;
-    }
+    TimeEntry update(long id, TimeEntry timeEntry);
 
-    public void delete(long id) {
-    }
+    void delete(long id);
 }
