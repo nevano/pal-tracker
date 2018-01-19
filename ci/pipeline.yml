@@ -97,7 +97,7 @@ jobs:
       CF_PASSWORD: e858bdfa
       CF_ORG: rebecca-mcinerney-pal
       CF_SPACE: production
-      MYSQL_IP: {{mysql-ip}}
+      MYSQL_IP: 192.168.16.87
       DATABASE_NAME: cf_f51d41e7_ada2_42c6_85ca_9d254cb9be46
       DATABASE_USERNAME: mkRXClES4I4NpF5D
       DATABASE_PASSWORD: IPoX5zr60CFDmSpe
